@@ -38,14 +38,12 @@ public class GT4500 implements SpaceShip {
 
     boolean firingSuccess = false;
 
-    switch (firingMode) {
-      case SINGLE:
-        firingSuccess = fireSingleTorpedo();
-        break;
-
-      case ALL:
-        firingSuccess = fireAllTorpedo();
-        break;
+    if (firingMode == FiringMode.SINGLE) {
+      firingSuccess = fireSingleTorpedo();
+    } else if (firingMode == FiringMode.ALL) {
+      firingSuccess = fireAllTorpedo();
+    } else {
+      // hibás érték
     }
 
     return firingSuccess;
