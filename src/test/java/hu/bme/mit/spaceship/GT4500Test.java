@@ -168,4 +168,21 @@ public class GT4500Test {
     assertEquals(false, wasPrimaryFiredLast);
   }
 
+  // 7-es új teszt
+  @Test
+  public void fireTorpedo_Single_FireFirstThenSecond(){
+    // Arrange
+    when(mockFirstTorpedoStore.isEmpty()).thenReturn(false);
+    when(mockFirstTorpedoStore.fire(1)).thenReturn(true);
+    when(mockSecondTorpedoStore.isEmpty()).thenReturn(false);
+    when(mockSecondTorpedoStore.fire(1)).thenReturn(true);
+
+    // Act
+    boolean result1 = ship.fireTorpedo(FiringMode.SINGLE);
+    boolean result2 = ship.fireTorpedo(FiringMode.SINGLE);
+
+    // Assert
+    assertEquals(true, result1 && result2);
+  }
+
 }
